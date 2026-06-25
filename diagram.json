@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -33.6,
+      "left": -363.3,
+      "rotate": 270,
+      "attrs": { "temperature": "45.2", "humidity": "72" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": 121.7,
+      "left": -468.5,
+      "rotate": 270,
+      "attrs": { "distance": "109" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -27.08,
+      "left": 269.3,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 137.4,
+      "left": 257.2,
+      "rotate": 180,
+      "attrs": {}
+    },
+    { "type": "wokwi-gas-sensor", "id": "gas1", "top": 223.5, "left": -242.6, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": 73.2, "left": 205.4, "attrs": { "color": "red" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "h130.8", "v-3.4" ] ],
+    [ "gas1:GND", "esp:GND.1", "black", [ "h28.8", "v-106.4" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h-41.2", "v86.6", "h-182.4", "v-105.6" ] ],
+    [ "esp:GND.2", "pir1:GND", "black", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "h220.8", "v144" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "h288", "v19.2" ] ],
+    [ "gas1:VCC", "esp:5V", "red", [ "h76.8", "v-68.1" ] ],
+    [ "ldr1:VCC", "esp:5V", "red", [ "h-89.2", "v57.4", "h-124.8", "v-38.4", "h0" ] ],
+    [ "pir1:VCC", "esp:5V", "red", [ "h-115.2", "v278.4", "h-192", "v-86.4" ] ],
+    [ "dht1:VCC", "esp:5V", "red", [ "h211.2", "v153.6" ] ],
+    [ "ultrasonic1:ECHO", "esp:18", "green", [ "h86.4", "v-200.8", "h374.4", "v144" ] ],
+    [ "ultrasonic1:TRIG", "esp:5", "green", [ "h115.2", "v-191.6", "h355.2", "v134.4" ] ],
+    [ "esp:23", "pir1:OUT", "green", [ "h120.04", "v-19.2", "h48" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "h19.2", "v278.3", "h384", "v-134.4" ] ],
+    [ "led1:A", "esp:2", "green", [ "v19.2", "v9.6", "h-115.2", "v19.2" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v9.6", "h-38", "v-96" ] ],
+    [ "gas1:DOUT", "esp:4", "green", [ "h0" ] ],
+    [ "ldr1:DO", "esp:34", "green", [ "h-96", "v-220.2", "h-182.4" ] ]
+  ],
+  "dependencies": {}
+}
